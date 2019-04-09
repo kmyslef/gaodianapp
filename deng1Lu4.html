@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="Ji1Gou4">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Deng1Lu4</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="common.js"></script>
+		<script src="js/config.js"></script>
+		<script src="deng1Lu4.js"></script>
+		
+		
+	</head>
+
+	<body ng-controller="deng1Lu4Con as deng1Lu4">
+		<header id="header" class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登陆<span id="titVersion" style="font-size: 12px;"></span></h1>
+		</header>
+		<div class="mui-content">
+
+			<form class="mui-input-group" style="margin-top: 60px;">
+				<div class="mui-input-row">
+					<label for="userText">账号</label>
+					<input id="userText" type="text" class="mui-input-clear" placeholder="请输入账号" ng-model=deng1Lu4.zhang4Hao4>
+				</div>
+				<div class="mui-input-row">
+					<label for="passText">密码</label>
+					<input id="passText" type="password" class="mui-input-password" placeholder="请输入密码" ng-model=deng1Lu4.mi4Ma3>
+				</div>
+			</form>
+
+			<div class="mui-content-padded" style="margin: 70px 20px;">
+				<button class="mui-btn mui-btn-blue mui-btn-block" type="button" ng-click=deng1Lu4.deng1Lu4_DZ()>登录</button>
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="Ji1Gou4">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/app.css" />
+
+		<script src="../../js/angular.min.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../common.js"></script>	
+		<script src="../../js/config.js"></script>
+		<script src="chanpinchuangjian.js"></script>
+	</head>
+
+	<body ng-controller="chanpinchuangjian as con">
+
+		<header id="header" class="mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+			<span class="mui-icon mui-icon-left-nav"></span>
+		</button>
+			<h1 class="mui-title">创建商品<span id="titVersion" style="font-size: 12px;"></span></h1>
+			<button type="button" class="mui-btn mui-btn-link" style="float: right;" ng-click=con.bao3cun2()>
+					保存
+				</button>
+		</header>
+
+		<div class="mui-content">
+			<h5 class="mui-content-padded mex-group-section-kong1"> </h5>
+			<div class="mui-input-group">
+				<div class="mui-table-view-cell" style="height: 100px;" ng-click=con.zhao4pian4()>
+					<h5 style="position: absolute;top: 40px;">商品照片 </h5>
+					
+						<span class="mui-pull-right head" style="height: 100px;">
+							<img class="head-img mui-action-preview" id="pic" src=con.tu2pian4lu4jing4 style="width: 60px; height: 60px;margin-top: 10px;" />
+						</span>
+					</div>
+			</div>
+			<h5 class="mui-content-padded mex-group-section-kong1-di4yi1ge4"> </h5>
+			<div class="mui-input-group">
+				<div class="mui-input-row">
+					<label for="fname">产品名称</label>
+					<input id="fname" type="text" class="mui-input-clear mui-text-right" style="padding-right: 9%;" placeholder="请输入姓名" ng-model=con.xing4Ming2>
+				</div>
+				<div class="mui-input-row">
+					<label for="fpname">产品描述</label>
+					<input id="fpname" type="text" class="mui-input-clear mui-text-right" style="padding-right: 9%;" placeholder="请输入昵称" ng-model=con.ni4Cheng1>
+				</div>
+				<div class="mui-input-row">
+					<label for="ttel">价格</label>
+					<input id="ttel" type="number" class="mui-input-clear mui-text-right" style="padding-right: 9%;" placeholder="请输入电话" ng-model=con.dian4Hua4>
+				</div>
+				<div class="mui-input-row">
+					<label for="tcertid">成本价</label>
+					<input id="tcertid" type="number" class="mui-input-clear mui-text-right" style="padding-right: 9%;" placeholder="请输入证件id" ng-model=con.zheng4jian4>
+				</div>
+			</div>
+			<h5 class="mui-content-padded mex-group-section-kong1"> </h5>
+			<div class="mui-input-group">
+				<div class="mui-table-view-cell mex-group-cell" ng-click=con.yu3yin1ID()>
+					<a class="mui-navigate-right">
+						分类
+					</a>
+				</div>
+				<div class="mui-table-view-cell mex-group-cell" ng-click=con.yu3yin1ID()>
+					<a class="mui-navigate-right">
+						标签
+					</a>
+				</div>
+			</div>
+
+	</body>
+
+</html>

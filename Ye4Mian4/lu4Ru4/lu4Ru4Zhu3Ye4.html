@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="Ji1Gou4">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/app.css" />
+
+		<script src="../../js/angular.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script src="lu4Ru4Zhu3Ye4.js"></script>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+			<h1 class="mui-title">录入信息<span id="titVersion" style="font-size: 12px;"></span></h1>
+		</header>
+		
+		<div class="mui-content" ng-controller="lu4Ru4Zhu3Ye4Con as lu4Ru4">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mex-group-cell" ng-click=lu4Ru4.lao3Shi1()>
+					<a class="mui-navigate-right">
+						教师信息
+					</a>
+				</li>
+				<li class="mui-table-view-cell mex-group-cell" ng-click=lu4Ru4.ban1Ji2()>
+					<a class="mui-navigate-right">
+						班级信息
+					</a>
+				</li>
+				<li class="mui-table-view-cell mex-group-cell" ng-click=lu4Ru4.xue2Sheng1()>
+					<a class="mui-navigate-right">
+						学生信息
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+	</body>
+</html>
