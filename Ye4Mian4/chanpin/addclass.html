@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="Ji1Gou4">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/app.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<script src="../../js/angular.min.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../common.js"></script>
+		<script src="../../js/config.js"></script>
+		<script src="addclass.js"></script>
+	</head>
+
+	<body ng-controller="classCon as iclass">
+		<header id="header" class="mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+			<span class="mui-icon mui-icon-left-nav"></span>
+		</button>
+			<h1 class="mui-title">教师信息<span id="titVersion" style="font-size: 12px;"></span></h1>
+
+			<button type="button" class="mui-btn-link mui-pull-right" ng-click=iclass.tian1Jia1()>
+				<span class="mui-icon mui-icon-plusempty" style="font-size: 24px; font-weight: 900;"></span>
+		</button>
+		</header>
+
+	</body>
+
+</html>

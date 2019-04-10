@@ -113,13 +113,12 @@ angular.module('Ji1Gou4', [])
 			if(window.plus) {
 				plus.gallery.pick(function(e) {
 					document.getElementById("pic").src = e;
-					self.tu2pian4lu4jing4 = e;
-					console.log(e);
 					var files = document.getElementById('pic');
-					var image = document.getElementById("pic");
 					var wt = plus.nativeUI.showWaiting();
+					var url = HQ_wang3Luo4Di4Zhi3("/resource/obj/image");
 					var task = plus.uploader.createUpload(
-						"http://127.0.0.1:7001/resource/obj/image", {
+						url, 
+						{
 							method: "POST"
 						},
 						function(t, status) { //上传完成

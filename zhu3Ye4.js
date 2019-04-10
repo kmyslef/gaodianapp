@@ -11,5 +11,13 @@ angular.module('Ji1Gou4', [])
 						});
 					});
 		}
+		
+		self.fenlei = function() {
+			mui.plusReady(function() {
+						mui.openWindow({
+							url: 'Ye4Mian4/chanpin/addclass.html',
+						});
+					});
+		}
 
 	}])
