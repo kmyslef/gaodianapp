@@ -195,7 +195,8 @@
 			"zhu3Ye4.html": {
 				"resources": [],
 				"refer": [
-					"Ye4Mian4/chanpin/chanpinchuangjian.html"
+					"Ye4Mian4/chanpin/chanpinchuangjian.html",
+					"Ye4Mian4/chanpin/addclass.html"
 				],
 				"priority": 0
 			}

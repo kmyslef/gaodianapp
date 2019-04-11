@@ -1,7 +1,8 @@
 {
-  "zhu3Ye4.html": {
-    "refer": [
-      "Ye4Mian4/chanpin/chanpinchuangjian.html"
-    ]
-  }
+	"zhu3Ye4.html": {
+		"refer": [
+			"Ye4Mian4/chanpin/chanpinchuangjian.html",
+			"Ye4Mian4/chanpin/addclass.html"
+		]
+	}
 }

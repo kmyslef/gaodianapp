@@ -107,6 +107,22 @@ angular.module('Ji1Gou4', [])
 		self.yu3yin1ID = function() {
 			console.log('343');
 		}
+		
+		self.fenlei = function() {
+			mui.plusReady(function() {
+						mui.openWindow({
+							url: 'Ye4Mian4/chanpin/addclass.html',
+						});
+					});
+		}
+		
+		self.biaoqian = function() {
+			mui.plusReady(function() {
+						mui.openWindow({
+							url: 'selecttag.html',
+						});
+					});
+		}
 
 		self.zhao4pian4 = function() {
 
@@ -114,16 +130,16 @@ angular.module('Ji1Gou4', [])
 				plus.gallery.pick(function(e) {
 					document.getElementById("pic").src = e;
 					var files = document.getElementById('pic');
+					console.log(files.src);
+
 					var wt = plus.nativeUI.showWaiting();
 					var url = HQ_wang3Luo4Di4Zhi3("/resource/obj/image");
 					var task = plus.uploader.createUpload(
-						url, 
-						{
+						url, {
 							method: "POST"
 						},
 						function(t, status) { //上传完成
 							if(status == 200) {
-								alert("上传成功：" + t.responseText);
 								wt.close(); //关闭等待提示按钮
 							} else {
 								alert("上传失败：" + status);
@@ -131,12 +147,21 @@ angular.module('Ji1Gou4', [])
 							}
 						}
 					);
-//					task.addData("name", "test");
-					task.addFile(files.src, {
-						key: "file"
+
+					plus.io.resolveLocalFileSystemURL(e, function(entry) {
+						// 可通过entry对象操作test.html文件 
+						entry.file(function(file) {
+							var fileReader = new plus.io.FileReader();
+							var issucess = task.addFile(file.fullPath, {
+								key: "file"
+							});
+							//开始上传任务
+							task.start();
+						});
+					}, function(e) {
+						alert("上传失败，失败原因" + e.message);
 					});
-					//开始上传任务
-					task.start();
+
 				}, function(e) {}, {
 					filter: "image",
 					multiple: false,

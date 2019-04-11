@@ -1,5 +1,5 @@
 angular.module('Ji1Gou4', [])
-	.controller('classCon', ['$scope', '$http', function($scope, $http) {
+	.controller('tagCon', ['$scope', '$http', function($scope, $http) {
 		mui.init();
 
 		var self = this;
@@ -14,7 +14,7 @@ angular.module('Ji1Gou4', [])
 		self.reqinfo = function (){
 			plus.nativeUI.showWaiting("数据加载中...");
 			
-			var url = HQ_wang3Luo4Di4Zhi3("/sever/class/list");
+			var url = HQ_wang3Luo4Di4Zhi3("/sever/tag/list");
 			$http.get(url).success(function(data, status, headers, config) {
 
 				mui.plusReady(function() {
@@ -43,7 +43,7 @@ angular.module('Ji1Gou4', [])
 						if(e.value.length == 0) {
 							mui.toast('请填写分类名称');
 						} else {
-							var url = HQ_wang3Luo4Di4Zhi3("/sever/class/add");
+							var url = HQ_wang3Luo4Di4Zhi3("/sever/tag/add");
 							var bodyObj = {
 								"name": e.value
 							};
