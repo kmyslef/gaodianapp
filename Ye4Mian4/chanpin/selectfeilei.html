@@ -14,15 +14,15 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../common.js"></script>
 		<script src="../../js/config.js"></script>
-		<script src="selecttag.js"></script>
+		<script src="selectfeilei.js"></script>
 	</head>
 
-	<body ng-controller="tagselectCon as iclass">
+	<body ng-controller="feileiCon as iclass">
 		<header id="header" class="mui-bar mui-bar-nav">
 			<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
 			<span class="mui-icon mui-icon-left-nav"></span>
 		</button>
-			<h1 class="mui-title">选择标签<span id="titVersion" style="font-size: 12px;"></span></h1>
+			<h1 class="mui-title">选择分类<span id="titVersion" style="font-size: 12px;"></span></h1>
 
 			<button type="button" class="mui-btn-link mui-pull-right" ng-click=iclass.getCheckBoxValues()>
 				确定
@@ -34,7 +34,7 @@
 
 			<ul class="mui-table-view" ng-repeat="info in iclass.list">
 				<li class="mui-table-view-cell mui-checkbox mui-left">
-					<input name="checkbox" type="checkbox" value={{info.tagid}}>{{info.tagname}}
+					<input name="checkbox" type="checkbox" value={{info.classifyid}}>{{info.classifyname}}
 				</li>
 			</ul>
 		</div>

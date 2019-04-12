@@ -9,119 +9,136 @@ angular.module('Ji1Gou4', [])
 		self.dian4Hua4 = '';
 		self.zheng4jian4 = '';
 		self.tu2pian4lu4jing4;
+		self.feileiname = '';
+		self.biaoqianname = '';
+		self.biaoqianList = [];
+		self.feileiList = [];
+		self.zhaopian = "";
 		document.getElementById("pic").src = "../../resoure/tian1jia1zhao4pian4.png";
 
 		//base64编码    
-		function getBase64Image(img) {
-			var canvas = document.createElement("canvas"); //创建canvas DOM元素，并设置其宽高和图片一样
-			canvas.width = img.width;
-			canvas.height = img.height;
-			var ctx = canvas.getContext("2d");
-			ctx.drawImage(img, 0, 0, img.width, img.height); //使用画布画图
-			var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase(); //动态截取图片的格式
-			var dataURL = canvas.toDataURL("image/" + ext); //返回的是一串Base64编码的URL并指定格式
-			return dataURL;
-		}
-
-		function jiao4shi1(ming2cheng1, ni4cheng1, dian4hua4, zheng4jian4, tu2pian4lu4jing4) {
-			var tem = this;
-			tem.fname = ming2cheng1;
-			tem.fpname = ni4cheng1;
-			tem.ttel = dian4hua4;
-			tem.tcertid = zheng4jian4;
-			tem.tsoundid = '123';
-			var lu4jing4 = tu2pian4lu4jing4;
-			tem.imgbase64;
-			tem.imageBase64 = function() {
-				var image = document.getElementById("pic"); //new Image();
-				console.log('url' + lu4jing4);
-				image.src = lu4jing4;
-				var data = getBase64Image(image); //base64编码
-				tem.imgbase64 = data;
+		window.addEventListener('biaoqian', function(event) {
+			console.log(event)
+			// 数据都在event.detail里面  
+			var val = event.detail.val;
+			var tstr = "";
+			for(var i = 0; i < val.length; i++) {
+				var obj = val[i];
+				self.biaoqianList.push(obj.tagid);
+				if(i != 0) {
+					tstr += ",";
+				}
+				tstr += obj.tagname;
 			}
-		}
+			self.biaoqianname = tstr;
+			$scope.$apply();
+		});
+
+		window.addEventListener('feilei', function(event) {
+			console.log(event)
+			// 数据都在event.detail里面  
+			var val = event.detail.val;
+			var tstr = "";
+			for(var i = 0; i < val.length; i++) {
+				var obj = val[i];
+				self.feileiList.push(obj.classifyid);
+				if(i != 0) {
+					tstr += ",";
+				}
+				tstr += obj.classifyname;
+			}
+			self.feileiname = tstr;
+			$scope.$apply();
+		});
 
 		self.bao3cun2 = function() {
-
 			if(self.xing4Ming2.length == 0) {
-				mui.toast('请填写姓名');
+				mui.toast('请输入产品名称');
 				return;
 			}
 			if(self.ni4Cheng1.length == 0) {
-				mui.toast('请填昵称');
+				mui.toast('请输入产品描述');
 				return;
 			}
 			if(self.dian4Hua4.length == 0) {
-				mui.toast('请填电话');
+				mui.toast('请输入价格');
 				return;
 			}
 			if(self.zheng4jian4.length == 0) {
-				mui.toast('请填证件');
+				mui.toast('请输入成本价');
+				return;
+			}
+
+			if(self.zhaopian.length == 0) {
+				mui.toast('请选择照片');
+				return;
+			}
+			if(self.feileiList.length == 0) {
+				mui.toast('请选择分类');
 				return;
 			}
 
 			mui.plusReady(function() {
 				plus.nativeUI.showWaiting("数据检索中...");
 			});
+			var url = HQ_wang3Luo4Di4Zhi3("/sever/obj/add");
+			//     title: param.title,
+			//     des: param.des,
+			//     url: param.url,
+			//     price: param.price,
+			//     cost: param.cost
+			//param.tags
+			//  param.classs
+			var bodyObj = {
+				"title": self.xing4Ming2,
+				"des":self.ni4Cheng1,
+				"url":self.zhaopian,
+				"price":self.dian4Hua4,
+				"cost":self.zheng4jian4,
+				"tags":self.biaoqianList,
+				"classs":self.feileiList
+			}
+			$http.post(url, bodyObj).success(function(data, status, headers, config) {
 
-			var bodyObj = new jiao4shi1(self.xing4Ming2, self.ni4Cheng1, self.dian4Hua4, self.zheng4jian4, self.tu2pian4lu4jing4);
-			bodyObj.imageBase64();
-			//
-			//			console.log(JSON.stringify(bodyObj));
-			//
-			//			var token = localStorage.getItem('token');
-			//			var url = HQ_wang3Luo4Di4Zhi3('wang3Luo4Di4Zhi3_Ji1Gou4', '/train/personal/org/teacher/save?token=' + token);
+				mui.plusReady(function() {
+					plus.nativeUI.closeWaiting();
+				});
+				if(status === 200) {
 
-			//			$http.post(url, bodyObj).success(function(data, status, headers, config) {
-			//
-			//				mui.plusReady(function() {
-			//					plus.nativeUI.closeWaiting();
-			//				});
-			//				if(status === 200) {
-			//
-			//					if(data.bc === 1) {
-			//						dataVal = data.data;
-			//						mui.toast('注册成功');
-			//						var wobj = plus.webview.getWebviewById('jiao4Shi1Xin4Xi1_list');
-			//						
-			//						mui.fire(wobj, 'initUpdata', {});
-			//
-			//						mui.back();
-			//					} else {
-			//						mui.toast(data.bm);
-			//					}
-			//					console.log('添加教师信息返回' + JSON.stringify(data));
-			//				} else {
-			//					console.log(status + '添加教师信息返回' + JSON.stringify(data));
-			//				}
-			//
-			//			}).error(function(data, status, headers, config) {
-			//				mui.plusReady(function() {
-			//					plus.nativeUI.closeWaiting();
-			//				});
-			//				console.log(status + '添加教师信息返回' + JSON.stringify(data));
-			//				mui.toast(status);
-			//			});
+					self.reqinfo();
+				} else {
+					mui.toast("上传失败");
+
+				}
+			}).error(function(data, status, headers, config) {
+				mui.plusReady(function() {
+					plus.nativeUI.closeWaiting();
+				});
+				mui.toast("上传失败");
+			});
+
+			
+
 		}
 
 		self.yu3yin1ID = function() {
 			console.log('343');
 		}
-		
+
 		self.fenlei = function() {
 			mui.plusReady(function() {
-						mui.openWindow({
-							url: 'Ye4Mian4/chanpin/addclass.html',
-						});
-					});
+				mui.openWindow({
+					url: 'selectfeilei.html',
+				});
+			});
 		}
-		
+
 		self.biaoqian = function() {
 			mui.plusReady(function() {
-						mui.openWindow({
-							url: 'selecttag.html',
-						});
-					});
+				mui.openWindow({
+					url: 'selecttag.html',
+				});
+			});
 		}
 
 		self.zhao4pian4 = function() {
@@ -141,6 +158,10 @@ angular.module('Ji1Gou4', [])
 						function(t, status) { //上传完成
 							if(status == 200) {
 								wt.close(); //关闭等待提示按钮
+								var tem = JSON.parse(t.responseText);
+
+								self.zhaopian = tem.data.fileid;
+
 							} else {
 								alert("上传失败：" + status);
 								wt.close(); //关闭等待提示按钮

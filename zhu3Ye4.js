@@ -8,6 +8,7 @@ angular.module('Ji1Gou4', [])
 			mui.plusReady(function() {
 						mui.openWindow({
 							url: 'Ye4Mian4/chanpin/chanpinchuangjian.html',
+							id:"chanpinchuangjian"
 						});
 					});
 		}
@@ -23,7 +24,7 @@ angular.module('Ji1Gou4', [])
 		self.biaoqian = function() {
 			mui.plusReady(function() {
 						mui.openWindow({
-							url: 'Ye4Mian4/chanpin/addtag.html',
+							url: 'Ye4Mian4/chanpin/addtag.html'
 						});
 					});
 		}

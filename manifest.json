@@ -199,6 +199,14 @@
 					"Ye4Mian4/chanpin/addclass.html"
 				],
 				"priority": 0
+			},
+			"Ye4Mian4/chanpin/chanpinchuangjian.html": {
+				"resources": [],
+				"refer": [
+					"Ye4Mian4/chanpin/selectfeilei.html",
+					"Ye4Mian4/chanpin/selecttag.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

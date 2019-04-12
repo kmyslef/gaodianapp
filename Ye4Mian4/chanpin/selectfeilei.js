@@ -1,5 +1,5 @@
 angular.module('Ji1Gou4', [])
-	.controller('tagselectCon', ['$scope', '$http', function($scope, $http) {
+	.controller('feileiCon', ['$scope', '$http', function($scope, $http) {
 		mui.init();
 
 		var self = this;
@@ -18,7 +18,7 @@ angular.module('Ji1Gou4', [])
 				if(ele[i].checked) {
 					for(var j = 0; j < self.list.length; j++) {
 						var temobj = self.list[j];
-						if(ele[i].value == temobj.tagid) {
+						if(ele[i].value == temobj.classifyid) {
 							temlist.push(temobj);
 							break;
 						}
@@ -27,7 +27,7 @@ angular.module('Ji1Gou4', [])
 			}
 
 			var fid = plus.webview.getWebviewById("chanpinchuangjian")
-			mui.fire(fid, 'biaoqian', {
+			mui.fire(fid, 'feilei', {
 				val: temlist
 			});
 
@@ -37,7 +37,7 @@ angular.module('Ji1Gou4', [])
 		self.reqinfo = function() {
 			plus.nativeUI.showWaiting("数据加载中...");
 
-			var url = HQ_wang3Luo4Di4Zhi3("/sever/tag/list");
+			var url = HQ_wang3Luo4Di4Zhi3("/sever/class/list");
 			$http.get(url).success(function(data, status, headers, config) {
 
 				mui.plusReady(function() {

@@ -4,5 +4,11 @@
 			"Ye4Mian4/chanpin/chanpinchuangjian.html",
 			"Ye4Mian4/chanpin/addclass.html"
 		]
+	},
+	"Ye4Mian4/chanpin/chanpinchuangjian.html": {
+		"refer": [
+			"Ye4Mian4/chanpin/selectfeilei.html",
+			"Ye4Mian4/chanpin/selecttag.html"
+		]
 	}
 }
