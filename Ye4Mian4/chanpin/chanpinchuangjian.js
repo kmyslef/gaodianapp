@@ -91,21 +91,27 @@ angular.module('Ji1Gou4', [])
 			//  param.classs
 			var bodyObj = {
 				"title": self.xing4Ming2,
-				"des":self.ni4Cheng1,
-				"url":self.zhaopian,
-				"price":self.dian4Hua4,
-				"cost":self.zheng4jian4,
-				"tags":self.biaoqianList,
-				"classs":self.feileiList
+				"des": self.ni4Cheng1,
+				"url": self.zhaopian,
+				"price": self.dian4Hua4,
+				"cost": self.zheng4jian4,
+				"tags": self.biaoqianList,
+				"classs": self.feileiList
 			}
+			alert(JSON.stringify(bodyObj));
 			$http.post(url, bodyObj).success(function(data, status, headers, config) {
 
 				mui.plusReady(function() {
 					plus.nativeUI.closeWaiting();
 				});
 				if(status === 200) {
-
-					self.reqinfo();
+					if (data.data.res == 0){
+						mui.toast(data.data.message);
+					}else{
+						mui.toast("上传成功");
+						mui.back();
+					}
+					
 				} else {
 					mui.toast("上传失败");
 
@@ -116,8 +122,6 @@ angular.module('Ji1Gou4', [])
 				});
 				mui.toast("上传失败");
 			});
-
-			
 
 		}
 
@@ -144,10 +148,8 @@ angular.module('Ji1Gou4', [])
 		self.zhao4pian4 = function() {
 
 			if(window.plus) {
-				plus.gallery.pick(function(e) {
-					document.getElementById("pic").src = e;
-					var files = document.getElementById('pic');
-					console.log(files.src);
+				plus.gallery.pick(function(gallerdata) {
+					document.getElementById("pic").src = gallerdata;
 
 					var wt = plus.nativeUI.showWaiting();
 					var url = HQ_wang3Luo4Di4Zhi3("/resource/obj/image");
@@ -169,19 +171,16 @@ angular.module('Ji1Gou4', [])
 						}
 					);
 
-					plus.io.resolveLocalFileSystemURL(e, function(entry) {
-						// 可通过entry对象操作test.html文件 
-						entry.file(function(file) {
-							var fileReader = new plus.io.FileReader();
-							var issucess = task.addFile(file.fullPath, {
-								key: "file"
-							});
-							//开始上传任务
-							task.start();
-						});
-					}, function(e) {
-						alert("上传失败，失败原因" + e.message);
+					var filepath = plus.io.convertLocalFileSystemURL(gallerdata);
+					//压缩图片
+					var new_file = 'file://' + plus.io.convertLocalFileSystemURL(filepath);
+					console.log("filepath" + filepath);
+					console.log("new_file" + new_file);
+					var issucess = task.addFile(new_file, {
+						key: "file"
 					});
+					//开始上传任务
+					task.start();
 
 				}, function(e) {}, {
 					filter: "image",
