@@ -98,7 +98,7 @@ angular.module('Ji1Gou4', [])
 				"tags": self.biaoqianList,
 				"classs": self.feileiList
 			}
-			alert(JSON.stringify(bodyObj));
+                                  
 			$http.post(url, bodyObj).success(function(data, status, headers, config) {
 
 				mui.plusReady(function() {
